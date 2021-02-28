@@ -743,7 +743,7 @@ void setup() {
 
 #if defined(MOSFET_PIN) && defined(MOSFET_LEVEL)           
     pinMode(MOSFET_PIN, OUTPUT);
-    digitalWrite(MOSFET_PIN, !MOSFET_LEVEL);
+    digitalWrite(MOSFET_PIN, power == 1 ? MOSFET_LEVEL : !MOSFET_LEVEL);
 #endif
 
     // starting file system
