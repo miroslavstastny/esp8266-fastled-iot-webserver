@@ -3002,15 +3002,13 @@ bool incrementTime()
 void DrawTime(int r, int g, int b, int hueMode)
 {
 #define LEDS_PER_SEGMENT (Digit2 / 7)
-    for (int l = 0; l < LEDS_PER_SEGMENT; l++)
-    {
-        if (hours < 10) DrawDigit(Digit1 + l, LEDS_PER_SEGMENT, r, g, b, -1, hueMode);        // Turn off leading zero
-        else DrawDigit(Digit1 + l, LEDS_PER_SEGMENT, r, g, b, hours / 10, hueMode); //Draw the first digit of the hour
-        DrawDigit(Digit2 + l, LEDS_PER_SEGMENT, r, g, b, hours - ((hours / 10) * 10), hueMode); //Draw the second digit of the hour
 
-        DrawDigit(Digit3 + l, LEDS_PER_SEGMENT, r, g, b, mins / 10, hueMode); //Draw the first digit of the minute
-        DrawDigit(Digit4 + l, LEDS_PER_SEGMENT, r, g, b, mins - ((mins / 10) * 10), hueMode); //Draw the second digit of the minute
-    }
+    if (hours < 10) DrawDigit(Digit1, LEDS_PER_SEGMENT, r, g, b, -1, hueMode);        // Turn off leading zero
+    else DrawDigit(Digit1, LEDS_PER_SEGMENT, r, g, b, hours / 10, hueMode); //Draw the first digit of the hour
+    DrawDigit(Digit2, LEDS_PER_SEGMENT, r, g, b, hours - ((hours / 10) * 10), hueMode); //Draw the second digit of the hour
+
+    DrawDigit(Digit3, LEDS_PER_SEGMENT, r, g, b, mins / 10, hueMode); //Draw the first digit of the minute
+    DrawDigit(Digit4, LEDS_PER_SEGMENT, r, g, b, mins - ((mins / 10) * 10), hueMode); //Draw the second digit of the minute
 }
 
 void dDHelper(int offset, int seg, int segmentLedCount, int hueMode, CRGB rgb = CRGB(0, 0, 0) )
