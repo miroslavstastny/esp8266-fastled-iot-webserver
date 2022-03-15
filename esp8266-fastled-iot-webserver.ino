@@ -1405,7 +1405,7 @@ void loop() {
                 mqttClient.subscribe(mqttSetTopicC);
 
                 char mqttSetTopicS[66];
-                strcpy(mqttSetTopicS, "~");
+                strlcpy(mqttSetTopicS, "~", sizeof(mqttSetTopicS));
                 strlcat(mqttSetTopicS, cfg.MQTTSetTopic, sizeof(mqttSetTopicS));
 
                 DynamicJsonDocument JSONencoder(4096);
@@ -1429,8 +1429,8 @@ void loop() {
                 }
                 size_t n = measureJson(JSONencoder);
                 char mqttConfigTopic[85];
-                strlcat(mqttConfigTopic, cfg.MQTTTopic, sizeof(mqttConfigTopic));
-                strcat(mqttConfigTopic, "/config");
+                strlcpy(mqttConfigTopic, cfg.MQTTTopic, sizeof(mqttConfigTopic));
+                strlcat(mqttConfigTopic, "/config",sizeof(mqttConfigTopic));
                 if (mqttClient.beginPublish(mqttConfigTopic, n, true) == true) {
                     SERIAL_DEBUG_LN("Configuration Publishing Begun")
                     if (serializeJson(JSONencoder, mqttClient) == n){
