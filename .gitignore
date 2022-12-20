@@ -44,3 +44,6 @@ Secrets.h
 CppProperties.json
 Debug/
 fast/
+
+# Macos
+.DS_Store

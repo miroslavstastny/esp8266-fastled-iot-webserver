@@ -73,7 +73,7 @@ extern "C" {
 
 #define DEFAULT_HOSTNAME "LEDs"         // Name that appears in your network, don't use whitespaces, use "-" instead
 
-#define LED_DEVICE_TYPE 0               // The following types are available
+#define LED_DEVICE_TYPE 4               // The following types are available
 
 /*
     0: Generic LED-Strip: a regular LED-Strip without any special arrangement (and Infinity Mirror + Bottle Lighting Pad)
